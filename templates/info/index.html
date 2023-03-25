@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block menu %}
+    <ul>
+        {% for item in menu %}
+            <li>
+                <a href="http://127.0.0.1:8000/{{ item.name }}">{{ item.name }}</a>
+                {% if item.children.all %}
+                    {% include "info/index.html" with menu=item.children.all %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <!-- some content -->
+{% endblock %}
